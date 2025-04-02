@@ -6,17 +6,13 @@ import bookRoute from "./routes/booksroutes.js";
 import cors from "cors";
 
 const app = express();
+// Enable CORS for all origins
+app.use(cors());
 
 app.use(express.json());
 app.use('/books', bookRoute )
 
-app.use(cors(
-  {
-    origin:'http://localhost:4444',
-    methods:['GET','POST','PUT','DELETE'],
-    allowHeaders:['Content-Type']
-  }
-));
+
 
 app.get("/", (request, response) => {
   console.log(request);
